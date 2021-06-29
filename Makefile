@@ -6,7 +6,7 @@
 #    By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 14:55:59 by adeburea          #+#    #+#              #
-#    Updated: 2021/06/25 16:03:10 by adeburea         ###   ########.fr        #
+#    Updated: 2021/06/29 20:34:30 by adeburea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME	=	fractol
 CC		=	clang
-FLAGS	=	-O3 -Wall -Wextra -Werror
+FLAGS	=	-O3 -Wall -Wextra -Werror -g -fsanitize=address
 INC		=	incs
 OBJ		=	objs
 SRC		=	srcs
@@ -22,7 +22,12 @@ LIBFT	=	libft
 LIBMLX	=	libmlx
 INCS	=	$(addprefix $(INC)/, fractol.h)
 OBJS	=	$(addprefix $(OBJ)/, $(SRCS:.c=.o))
-SRCS 	=	main.c
+SRCS 	=	main.c \
+			julia.c \
+			mandelbrot.c \
+			mlx_utils.c \
+			color.c \
+			exit.c
 
 all: init $(NAME)
 
@@ -32,7 +37,7 @@ init:
 	make -C $(LIBMLX)
 
 $(NAME): $(OBJS) $(INCS)
-	$(CC) $(FLAGS) -I$(INC) -o $(NAME) srcs/main.c $(OBJS) -Llibft -lft -Llibmlx -lmlx -lX11 -lbsd -lm -lXext
+	$(CC) $(FLAGS) -I$(INC) -o $(NAME) $(OBJS) -Llibft -lft -Llibmlx -lmlx -lX11 -lbsd -lm -lXext
 
 $(OBJ)/%.o: $(SRC)/%.c $(INCS)
 	$(CC) $(FLAGS) -I$(INC) -c $< -o $@
