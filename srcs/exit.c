@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 13:19:42 by adeburea          #+#    #+#             */
-/*   Updated: 2021/06/29 21:09:52 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/06/29 21:24:50 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,5 @@ int	exit_mlx_error(t_mlx *mlx, char *err)
 	free(mlx->mlx);
 	mlx->mlx = NULL;
 	exit_frac(EXIT_FAILURE, mlx->frac, err);
-	return (1);
-}
-
-int	key_escape(int keycode, t_mlx *mlx)
-{
-	if (keycode == ESCAPE)
-		exit_mlx(mlx);
 	return (1);
 }

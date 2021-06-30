@@ -6,13 +6,13 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:34:58 by adeburea          #+#    #+#             */
-/*   Updated: 2021/06/29 21:18:53 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/06/30 03:17:21 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fractol.h"
 
-int	calc_julia(t_frac *frac)
+int	julia_calc(t_frac *frac)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ int	calc_julia(t_frac *frac)
 	return (i);
 }
 
-void	draw_julia(t_frac *frac, t_mlx *mlx)
+void	julia_draw(t_frac *frac, t_mlx *mlx)
 {
 	int	i;
 	int	x;
@@ -46,39 +46,22 @@ void	draw_julia(t_frac *frac, t_mlx *mlx)
 				/ (0.5 * frac->zoom * mlx->rx) + frac->movex;
 			frac->newim = (y - mlx->ry / 2)
 				/ (0.5 * frac->zoom * mlx->ry) + frac->movey;
-			i = calc_julia(frac);
+			i = julia_calc(frac);
 			frac->color = (hsv_to_rgb(i % 256, 255, 255 * (i < frac->maxi)));
 			mlx_pixel_draw(mlx, x, y, frac->color);
 		}
 	}
 }
 
-int	hook_julia(t_mlx *mlx)
-{
-	t_mlx	tmp;
-
-	mlx_destroy_image(mlx->mlx, mlx->img);
-	tmp.img = mlx_new_image(mlx->mlx, mlx->rx, mlx->ry);
-	tmp.addr = mlx_get_data_addr(tmp.img, &tmp.bpp, &tmp.len, &tmp.endian);
-	tmp.rx = mlx->rx;
-	tmp.ry = mlx->ry;
-	draw_julia(mlx->frac, &tmp);
-	mlx->img = tmp.img;
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
-	return (1);
-}
-
 void	julia(t_frac *frac, t_mlx *mlx)
 {
-	frac->maxi = 300;
-	frac->zoom = 8;
-	frac->movex = 0;
-	frac->movey = 0;
+	frac->fps = 300;
+	frac->maxi = 170;
 	frac->cre = -0.7;
 	frac->cim = 0.27015;
-	mlx_hook(mlx->win, 33, 1L << 17, exit_mlx, mlx);
-	mlx_hook(mlx->win, 2, 1L << 0, key_escape, mlx);
-	mlx_loop_hook(mlx->mlx, hook_julia, mlx);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
-	mlx_loop(mlx->mlx);
+	frac->zoom = 1;
+	frac->movex = 0;
+	frac->movey = 0;
+	mlx->draw = &julia_draw;
+	hook(mlx);
 }

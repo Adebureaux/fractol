@@ -6,7 +6,7 @@
 #    By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 14:55:59 by adeburea          #+#    #+#              #
-#    Updated: 2021/06/29 20:34:30 by adeburea         ###   ########.fr        #
+#    Updated: 2021/06/30 01:41:41 by adeburea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS 	=	main.c \
 			mandelbrot.c \
 			mlx_utils.c \
 			color.c \
+			hook.c \
 			exit.c
 
 all: init $(NAME)
