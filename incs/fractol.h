@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:38:42 by adeburea          #+#    #+#             */
-/*   Updated: 2021/06/30 03:17:37 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/06/30 16:28:29 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define RESET "\033[0m"
 # define RED "\033[31m"
 # define GREEN "\033[32m"
-
 # define ESCAPE 65307
 # define UP 65362
 # define LEFT 65361
@@ -57,8 +56,8 @@ struct			s_frac
 	double	movex;
 	double	movey;
 	int		color;
+	int		frame;
 	int		maxi;
-	int		fps;
 };
 
 typedef struct s_mlx	t_mlx;

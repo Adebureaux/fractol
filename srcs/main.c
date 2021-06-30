@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:33:47 by adeburea          #+#    #+#             */
-/*   Updated: 2021/06/29 15:57:55 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/06/30 16:30:50 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int ac, char **av)
 	if (ac < 2 || (ft_strcmp(av[1], "julia") && ft_strcmp(av[1], "mandelbrot")))
 		exit_frac(1, NULL, "valid parameter are 'julia' or 'mandelbrot'");
 	start_mlx(&frac, &mlx);
+	if (ac > 2)
+		frac.maxi = ft_atoi(av[2]);
 	if (!ft_strcmp(av[1], "julia"))
 		julia(&frac, &mlx);
 	else
