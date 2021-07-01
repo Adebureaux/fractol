@@ -6,15 +6,15 @@
 #    By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 14:55:59 by adeburea          #+#    #+#              #
-#    Updated: 2021/06/30 01:41:41 by adeburea         ###   ########.fr        #
+#    Updated: 2021/07/01 17:48:43 by adeburea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 
 NAME	=	fractol
 CC		=	clang
-FLAGS	=	-O3 -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS	=	-O3 -Wall -Wextra -Werror
 INC		=	incs
 OBJ		=	objs
 SRC		=	srcs
@@ -25,14 +25,15 @@ OBJS	=	$(addprefix $(OBJ)/, $(SRCS:.c=.o))
 SRCS 	=	main.c \
 			julia.c \
 			mandelbrot.c \
+			sierpinski.c \
 			mlx_utils.c \
 			color.c \
 			hook.c \
 			exit.c
 
-all: init $(NAME)
+all: bonus $(NAME)
 
-init:
+bonus:
 	mkdir -p $(OBJ)
 	make -C $(LIBFT)
 	make -C $(LIBMLX)

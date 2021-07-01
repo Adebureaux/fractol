@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:34:58 by adeburea          #+#    #+#             */
-/*   Updated: 2021/07/01 03:48:47 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 16:24:13 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,12 @@ void	julia_draw(t_frac *frac, t_mlx *mlx)
 
 void	julia(t_frac *frac, t_mlx *mlx)
 {
-	frac->maxi = 170;
+	frac->maxi = 128;
 	frac->cre = -0.7;
 	frac->cim = 0.27015;
 	frac->zoom = 1;
-	frac->movex = 0.001;
-	frac->movey = 0.001;
+	frac->movex = 0;
+	frac->movey = 0;
 	mlx->draw = &julia_draw;
-	printf(GREEN"------------------------------------------------\n"RESET);
-	printf("Press h to get info\n");
-	printf("Click or scroll to zoom-in and zoom-out\n");
-	printf("Use arrow to move axis\n");
-	printf("Use + or - to change the number of iterations\n");
-	printf(GREEN"------------------------------------------------\n\n"RESET);
 	hook(mlx);
 }

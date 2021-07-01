@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   sierpinski.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/29 13:18:55 by adeburea          #+#    #+#             */
-/*   Updated: 2021/07/01 17:34:16 by adeburea         ###   ########.fr       */
+/*   Created: 2021/07/01 17:47:42 by adeburea          #+#    #+#             */
+/*   Updated: 2021/07/01 17:50:11 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	mandelbrot_calc(t_frac *frac)
 
 void	mandelbrot_draw(t_frac *frac, t_mlx *mlx)
 {
-	int	i;
 	int	x;
 	int	y;
 
@@ -42,24 +41,58 @@ void	mandelbrot_draw(t_frac *frac, t_mlx *mlx)
 		x = -1;
 		while (++x < mlx->rx)
 		{
-			frac->pr = 1.5 * (x - mlx->rx / 2)
-				/ (0.5 * frac->zoom * mlx->rx) + frac->movex;
-			frac->pi = (y - mlx->ry / 2)
-				/ (0.5 * frac->zoom * mlx->ry) + frac->movey;
-			frac->newre = frac->newim = frac->oldre = frac->oldim = 0;
-			i = mandelbrot_calc(frac);
-			frac->color = (hsv_to_rgb(i % 256, 255, 255 * (i < frac->maxi)));
+			if
+		    (
+		      //Not both the first (rightmost) digits are '1' in base 3
+		      !(
+		           (x / 1) % 3 == 1
+		        && (y / 1) % 3 == 1
+		      )
+
+		      &&
+
+		      //Not both the second digits are '1' in base 3
+		      !(
+		           (x / 3) % 3 == 1
+		        && (y / 3) % 3 == 1
+		      )
+
+		      &&
+
+		      //Not both the third digits are '1' in base 3
+		      !(
+		           (x / 9) % 3 == 1
+		        && (y / 9) % 3 == 1
+		      )
+
+		      &&
+
+		      //Not both the fourth digits are '1' in base 3
+		      !(
+		           (x / 27) % 3 == 1
+		        && (y / 27) % 3 == 1
+		      )
+
+		      &&
+
+		      //Not both the fifth digits are '1' in base 3
+		      !(
+		           (x / 81) % 3 == 1
+		        && (y / 81) % 3 == 1
+		      )
+		    )
+			frac->color = (hsv_to_rgb(x % 256, 255, 255 * (y < frac->maxi)));
 			mlx_pixel_draw(mlx, x, y, frac->color);
 		}
 	}
 }
 
-void	mandelbrot(t_frac *frac, t_mlx *mlx)
+void	sierpinski(t_frac *frac, t_mlx *mlx)
 {
 	frac->maxi = 128;
 	frac->zoom = 0.8;
 	frac->movex = -0.5;
 	frac->movey = 0;
-	mlx->draw = &mandelbrot_draw;
+	mlx->draw = &sierpinski_draw;
 	hook(mlx);
 }

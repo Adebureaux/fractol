@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 00:02:37 by adeburea          #+#    #+#             */
-/*   Updated: 2021/07/01 04:14:31 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 17:05:42 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,22 @@ int		mouse_press(int mousecode, int x, int y, t_mlx *mlx)
 	t_frac	*frac;
 
 	frac = mlx->frac;
+	if (mousecode == 4)
+		frac->zoom *= pow(1.001, frac->frame);
 	if (mousecode == 4 || mousecode == 1)
 	{
-		frac->zoom *= pow(1.001, frac->frame);
 		if (x < mlx->rx / 2)
-			frac->movex -= 0.0003 * x / frac->zoom;
+			frac->movex -= 0.00226 * ((mlx->rx / 2) - x) / frac->zoom;
 		else
-			frac->movex += 0.0003 * x / frac->zoom;
+			frac->movex += 0.00226 * (x - (mlx->rx / 2)) / frac->zoom;
 		if (y < mlx->ry / 2)
-			frac->movey -= 0.0003 * y * 2 / frac->zoom;
+			frac->movey -= 0.00211 * ((mlx->ry / 2) - y) / frac->zoom;
 		else
-			frac->movey += 0.0003 * y * 2 / frac->zoom;
+			frac->movey += 0.00211 * (y - (mlx->ry / 2)) / frac->zoom;
 	}
 	else if (mousecode == 5 || mousecode == 3)
 		frac->zoom /= pow(1.001, frac->frame);
-	return (x + y);
+	return (1);
 }
 
 int	key_press(int keycode, t_mlx *mlx)
@@ -53,6 +54,8 @@ int	key_press(int keycode, t_mlx *mlx)
 		frac->maxi *= 2;
 	else if (keycode == MINUS && frac->maxi > 2)
 		frac->maxi /= 2;
+	if (keycode == SPACE)
+		frac->zoom *= pow(1.001, frac->frame);
 	else if (keycode == HELP)
 		print_frac(frac);
 
