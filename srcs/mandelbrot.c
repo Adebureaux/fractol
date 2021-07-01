@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 13:18:55 by adeburea          #+#    #+#             */
-/*   Updated: 2021/07/01 17:34:16 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 18:13:06 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ void	mandelbrot_draw(t_frac *frac, t_mlx *mlx)
 				/ (0.5 * frac->zoom * mlx->rx) + frac->movex;
 			frac->pi = (y - mlx->ry / 2)
 				/ (0.5 * frac->zoom * mlx->ry) + frac->movey;
-			frac->newre = frac->newim = frac->oldre = frac->oldim = 0;
+			frac->newre = 0;
+			frac->newim = 0;
+			frac->oldre = 0;
+			frac->oldim = 0;
 			i = mandelbrot_calc(frac);
 			frac->color = (hsv_to_rgb(i % 256, 255, 255 * (i < frac->maxi)));
 			mlx_pixel_draw(mlx, x, y, frac->color);

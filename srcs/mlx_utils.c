@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 13:18:55 by adeburea          #+#    #+#             */
-/*   Updated: 2021/07/01 17:32:26 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 18:16:06 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	start_mlx(t_frac *frac, t_mlx *mlx)
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->len, &mlx->endian);
 }
 
-int		redraw(t_mlx *mlx)
+int	redraw(t_mlx *mlx)
 {
 	t_mlx	tmp;
 

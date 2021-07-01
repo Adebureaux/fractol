@@ -6,13 +6,13 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 00:02:37 by adeburea          #+#    #+#             */
-/*   Updated: 2021/07/01 17:05:42 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 18:14:17 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fractol.h"
 
-int		mouse_press(int mousecode, int x, int y, t_mlx *mlx)
+int	mouse_press(int mousecode, int x, int y, t_mlx *mlx)
 {
 	t_frac	*frac;
 
@@ -58,7 +58,6 @@ int	key_press(int keycode, t_mlx *mlx)
 		frac->zoom *= pow(1.001, frac->frame);
 	else if (keycode == HELP)
 		print_frac(frac);
-
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:38:42 by adeburea          #+#    #+#             */
-/*   Updated: 2021/07/01 17:33:03 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 18:08:08 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ struct			s_mlx
 
 void			julia(t_frac *frac, t_mlx *mlx);
 void			mandelbrot(t_frac *frac, t_mlx *mlx);
+void			sierpinski(t_mlx *mlx);
 void			print_frac(t_frac *frac);
 void			exit_frac(int status, t_frac *frac);
 int				exit_mlx(t_mlx *mlx);
