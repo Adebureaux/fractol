@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 17:47:42 by adeburea          #+#    #+#             */
-/*   Updated: 2021/07/01 18:15:45 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 19:09:22 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	sierpinski_draw(t_frac *frac, t_mlx *mlx)
 	int	x;
 	int	y;
 
-	(void)frac;
 	y = -1;
 	while (++y < mlx->ry)
 	{
@@ -35,8 +34,9 @@ void	sierpinski_draw(t_frac *frac, t_mlx *mlx)
 	}
 }
 
-void	sierpinski(t_mlx *mlx)
+void	sierpinski(t_frac *frac, t_mlx *mlx)
 {
+	frac->sierpinski = 1;
 	mlx->draw = &sierpinski_draw;
 	hook(mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:34:58 by adeburea          #+#    #+#             */
-/*   Updated: 2021/07/01 16:24:13 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 19:14:14 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	julia(t_frac *frac, t_mlx *mlx)
 	frac->maxi = 128;
 	frac->cre = -0.7;
 	frac->cim = 0.27015;
-	frac->zoom = 1;
+	frac->zoom = 0.8;
 	frac->movex = 0;
 	frac->movey = 0;
 	mlx->draw = &julia_draw;

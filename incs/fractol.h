@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:38:42 by adeburea          #+#    #+#             */
-/*   Updated: 2021/07/01 18:08:08 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 19:24:38 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ struct			s_frac
 	int		color;
 	int		frame;
 	int		maxi;
+	int		sierpinski;
 };
 
 typedef struct s_mlx	t_mlx;
@@ -84,12 +85,12 @@ struct			s_mlx
 
 void			julia(t_frac *frac, t_mlx *mlx);
 void			mandelbrot(t_frac *frac, t_mlx *mlx);
-void			sierpinski(t_mlx *mlx);
+void			sierpinski(t_frac *frac, t_mlx *mlx);
 void			print_frac(t_frac *frac);
 void			exit_frac(int status, t_frac *frac);
 int				exit_mlx(t_mlx *mlx);
 int				hsv_to_rgb(unsigned int h, unsigned int s, unsigned int v);
-void			start_mlx(t_frac *frac, t_mlx *mlx);
+void			start_mlx(t_mlx *mlx);
 int				redraw(t_mlx *mlx);
 void			mlx_pixel_draw(t_mlx *mlx, int x, int y, int color);
 void			hook(t_mlx *mlx);

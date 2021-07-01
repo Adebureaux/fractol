@@ -6,16 +6,15 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 13:18:55 by adeburea          #+#    #+#             */
-/*   Updated: 2021/07/01 18:16:06 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 19:24:27 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fractol.h"
 
-void	start_mlx(t_frac *frac, t_mlx *mlx)
+void	start_mlx(t_mlx *mlx)
 {
 	mlx->mlx = mlx_init();
-	mlx->frac = frac;
 	mlx_get_screen_size(mlx->mlx, &mlx->rx, &mlx->ry);
 	if (mlx->rx > 1200)
 		mlx->rx -= 600;

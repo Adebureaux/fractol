@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 00:02:37 by adeburea          #+#    #+#             */
-/*   Updated: 2021/07/01 18:14:17 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 19:25:25 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int	key_press(int keycode, t_mlx *mlx)
 	t_frac	*frac;
 
 	frac = mlx->frac;
-	if (keycode == ESCAPE)
+	if (keycode == HELP && !frac->sierpinski)
+		print_frac(frac);
+	else if (keycode == ESCAPE)
 		exit_mlx(mlx);
 	else if (keycode == UP)
 		frac->movey -= 0.0003 * frac->frame / frac->zoom;
@@ -54,10 +56,8 @@ int	key_press(int keycode, t_mlx *mlx)
 		frac->maxi *= 2;
 	else if (keycode == MINUS && frac->maxi > 2)
 		frac->maxi /= 2;
-	if (keycode == SPACE)
+	else if (keycode == SPACE)
 		frac->zoom *= pow(1.001, frac->frame);
-	else if (keycode == HELP)
-		print_frac(frac);
 	return (1);
 }
 
