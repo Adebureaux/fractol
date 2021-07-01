@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:38:42 by adeburea          #+#    #+#             */
-/*   Updated: 2021/06/30 16:28:29 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 03:51:48 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@
 # define LEFT 65361
 # define DOWN 65364
 # define RIGHT 65363
+# define PLUS 65451
+# define MINUS 65453
+# define HELP 104
 
 typedef struct s_rgb	t_rgb;
 struct			s_rgb
@@ -79,17 +82,17 @@ struct			s_mlx
 void			julia(t_frac *frac, t_mlx *mlx);
 void			mandelbrot(t_frac *frac, t_mlx *mlx);
 
-void			exit_frac(int status, t_frac *frac, char *err);
+void			exit_frac(int status, t_frac *frac);
 int				exit_mlx(t_mlx *mlx);
-int				exit_mlx_error(t_mlx *mlx, char *err);
 
 int				hsv_to_rgb(unsigned int h, unsigned int s, unsigned int v);
 
 void			start_mlx(t_frac *frac, t_mlx *mlx);
+void			print_frac(t_frac *frac);
 int				redraw(t_mlx *mlx);
 void			mlx_pixel_draw(t_mlx *mlx, int x, int y, int color);
-void			hook(t_mlx *mlx);
 
+void			hook(t_mlx *mlx);
 int				key_press(int keycode, t_mlx *mlx);
 int				mouse_press(int mousecode, int x, int y, t_mlx *mlx);
 

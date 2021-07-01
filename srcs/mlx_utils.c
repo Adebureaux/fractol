@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 13:18:55 by adeburea          #+#    #+#             */
-/*   Updated: 2021/06/30 03:06:09 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 03:53:04 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,26 @@ void	start_mlx(t_frac *frac, t_mlx *mlx)
 	mlx->mlx = mlx_init();
 	mlx->frac = frac;
 	mlx_get_screen_size(mlx->mlx, &mlx->rx, &mlx->ry);
+	if (mlx->rx > 1200)
+		mlx->rx -= 600;
 	mlx->win = mlx_new_window(mlx->mlx, mlx->rx, mlx->ry, "fractol");
 	mlx->img = mlx_new_image(mlx->mlx, mlx->rx, mlx->ry);
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->len, &mlx->endian);
 }
 
+void	print_frac(t_frac *frac)
+{
+	printf(GREEN"------------------------------------------------\n"RESET);
+	printf("X POS : %f\n", frac->movex);
+	printf("Y POS : %f\n", frac->movey);
+	printf("ZOOM  : %f\n", frac->zoom);
+	printf("ITER  : %d\n", frac->maxi);
+	printf(GREEN"------------------------------------------------\n"RESET);
+	printf("Click or scroll to zoom-in and zoom-out\n");
+	printf("Use arrow to move axis\n");
+	printf("Use + or - to change the number of iterations\n");
+	printf(GREEN"------------------------------------------------\n\n"RESET);
+}
 
 int		redraw(t_mlx *mlx)
 {

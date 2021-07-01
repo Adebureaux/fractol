@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 13:19:42 by adeburea          #+#    #+#             */
-/*   Updated: 2021/06/29 21:24:50 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/01 01:57:49 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,16 @@ void	free_frac(t_frac *frac)
 		free(frac);
 }
 
-void	exit_frac(int status, t_frac *frac, char *err)
+void	exit_frac(int status, t_frac *frac)
 {
 	if (frac)
 		free_frac(NULL);
 	if (status)
-		printf(RED"error: %s\n"RESET, err);
+	{
+		printf(RED"error: invalid parameter'\n"RESET);
+		printf(RED"1st arg: 'julia', 'mandelbrot'\n"RESET);
+		printf(RED"2nd arg: 'int' (SPEED)\n"RESET);
+	}
 	else
 		printf(GREEN"fractol exited properly\n"RESET);
 	exit(status);
@@ -37,11 +41,11 @@ int	exit_mlx(t_mlx *mlx)
 	mlx_destroy_display(mlx->mlx);
 	free(mlx->mlx);
 	mlx->mlx = NULL;
-	exit_frac(EXIT_SUCCESS, mlx->frac, NULL);
+	exit_frac(EXIT_SUCCESS, mlx->frac);
 	return (1);
 }
 
-int	exit_mlx_error(t_mlx *mlx, char *err)
+int	exit_mlx_error(t_mlx *mlx)
 {
 	mlx_destroy_image(mlx->mlx, mlx->img);
 	mlx_clear_window(mlx->mlx, mlx->win);
@@ -49,6 +53,6 @@ int	exit_mlx_error(t_mlx *mlx, char *err)
 	mlx_destroy_display(mlx->mlx);
 	free(mlx->mlx);
 	mlx->mlx = NULL;
-	exit_frac(EXIT_FAILURE, mlx->frac, err);
+	exit_frac(EXIT_FAILURE, mlx->frac);
 	return (1);
 }
