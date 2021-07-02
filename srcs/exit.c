@@ -6,7 +6,7 @@
 /*   By: adeburea <adeburea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 13:19:42 by adeburea          #+#    #+#             */
-/*   Updated: 2021/07/01 01:57:49 by adeburea         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:48:59 by adeburea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	exit_frac(int status, t_frac *frac)
 	if (status)
 	{
 		printf(RED"error: invalid parameter'\n"RESET);
-		printf(RED"1st arg: 'julia', 'mandelbrot'\n"RESET);
+		printf(RED"1st arg: 'julia', 'mandelbrot', 'sierpinski'\n"RESET);
 		printf(RED"2nd arg: 'int' (SPEED)\n"RESET);
 	}
 	else
